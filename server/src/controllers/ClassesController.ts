@@ -11,7 +11,7 @@ interface ScheduleItem {
 
 export default class ClassesController {
 
-    // GET: GetAll
+    // GET: GetAll, filtered by week_day, subject and time
     async index(request: Request, response: Response) {
         const filters = request.query;
 
@@ -28,6 +28,14 @@ export default class ClassesController {
         const timeInMinutes = convertHoursToMinutes(time);
 
         const classes = await db('classes')
+            .whereExists(function() {
+                this.select('class_schedule.*')
+                    .from('class_schedule')
+                    .whereRaw('`class_schedule`.`class_id` = `classes`.`id`')
+                    .whereRaw('`class_schedule`.`week_day` = ??', [Number(week_day)])
+                    .whereRaw('`class_schedule`.`from` <= ??', [Number(timeInMinutes)])
+                    .whereRaw('`class_schedule`.`to` > ??', [Number(timeInMinutes)])
+            })
             .where('classes.subject', '=', subject)
             .join('users', 'classes.user_id', '=', 'users.id')
             .select(['classes.*', 'users.*']);

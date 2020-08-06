@@ -16,6 +16,7 @@
 
 .hero-image {
     width: 100%;
+    padding-top: 100px;
 }
 
 .logo-container {
@@ -101,8 +102,13 @@
         grid-template-columns: 2fr 1fr 1fr;
         grid-template-areas:
                 "logo hero hero"
-                "buttons buttons total"
-    ;
+                "buttons buttons total";
+    }
+
+    .hero-image {
+        max-height: 100%;
+        position: relative;
+        top: -30px;
     }
 }
 
@@ -140,3 +146,4 @@
     grid-area: total;
     justify-self: end;
 }
+

@@ -139,13 +139,13 @@ function TeacherForm() {
                         </button>
                     </legend>
 
-                    {scheduleItems.map((scheduleitem, index) => {
+                    {scheduleItems.map((scheduleItem, index) => {
                         return (
-                            <div key={scheduleitem.week_day} className="schedule-item">
+                            <div key={scheduleItem.week_day} className="schedule-item">
                                 <Select
                                     name="week_day"
                                     label="Dia da semana"
-                                    value={scheduleitem.week_day}
+                                    value={scheduleItem.week_day}
                                     onChange={e => setScheduleItemValue(index, 'week_day', e.target.value)}
                                     options={[
                                         {value: '0', label: 'Domingo'},
@@ -161,14 +161,14 @@ function TeacherForm() {
                                     name="from"
                                     label="Das"
                                     type="time"
-                                    value={scheduleitem.from}
+                                    value={scheduleItem.from}
                                     onChange={e => setScheduleItemValue(index, 'from', e.target.value)}
                                 />
                                 <Input
                                     name="to"
                                     label="Até"
                                     type="time"
-                                    value={scheduleitem.to}
+                                    value={scheduleItem.to}
                                     onChange={e => setScheduleItemValue(index, 'to', e.target.value)}
                                 />
                             </div>

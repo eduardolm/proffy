@@ -42,7 +42,7 @@ function StudyTabs() {
                 component={TeacherList}
                 options={
                     {
-                        headerShown: false,
+                        // headerShown: false,
                         tabBarLabel: 'Proffys',
                         tabBarIcon: ({color, size, focused}) => {
                             return (
@@ -57,7 +57,7 @@ function StudyTabs() {
                 component={Favorites}
                 options={
                     {
-                        headerShown: false,
+                        // headerShown: false,
                         tabBarLabel: 'Favoritos',
                         tabBarIcon: ({color, size, focused}) => {
                             return (
